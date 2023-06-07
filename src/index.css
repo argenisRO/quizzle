@@ -130,11 +130,9 @@ body {
 .quiz-option {
   font-family: "inter";
   color: #293264;
-  /* background: #d6dbf5; */
   font-size: 0.75rem;
   font-weight: 500;
   padding: 0.5rem 1.125rem;
-  /* border: 0.75px solid #4d5b9e; */
   border-radius: 0.5rem;
   background: #fff;
   cursor: pointer;
