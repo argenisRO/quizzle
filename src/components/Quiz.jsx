@@ -22,12 +22,14 @@ export default function Quiz({ startQuiz }) {
           throw new Error("Error fetching Quiz Data");
         }
 
-        const something = data.results.map((question) => ({
+        // append a unique id to each question and and set it to state
+        const newQuizData = data.results.map((question) => ({
           ...question,
           id: nanoid(),
         }));
-        // append a unique id to each question and and set it to state
-        setQuizData(something);
+
+        setQuizData(newQuizData);
+        setQuizLoaded(true);
       } catch (error) {
         console.log("Error", error);
       }
@@ -58,7 +60,6 @@ export default function Quiz({ startQuiz }) {
     });
 
     setQuestions(newQuestions);
-    setQuizLoaded(true);
   }, [quizData]);
 
   function buttonSelected(e, quiz_id) {
