@@ -173,6 +173,19 @@ body {
   animation: spin 1s linear infinite;
 }
 
+.score-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.score-title {
+  font-family: "Inter";
+  font-size: 1rem;
+  margin: 1rem 0 -10px;
+}
+
 @media screen and (min-width: 768px) {
   .header-title {
     font-size: 3.5rem;

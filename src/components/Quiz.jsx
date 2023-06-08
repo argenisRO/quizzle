@@ -109,6 +109,22 @@ export default function Quiz({ startQuiz }) {
     setQuizComplete(checkAnswers);
   }
 
+  function getScore() {
+    if (quizComplete) {
+      const correctAnswers = quizComplete.filter((question) => {
+        if (question.selectedAnswer.length === 0) {
+          return false;
+        }
+        return (
+          question.selectedAnswer[0].answer === question.correctAnswer[0].answer
+        );
+      });
+
+      return `${correctAnswers.length}/${quizComplete.length}`;
+    }
+    return "0/0";
+  }
+
   return (
     <div className="quiz-container">
       {quizLoaded ? (
@@ -122,8 +138,10 @@ export default function Quiz({ startQuiz }) {
             />
           ))}
           {quizComplete ? (
-            <div className="">
-              <h1>You Scored 3/5</h1>
+            <div className="score-container">
+              <h1 className="score-title">
+                You Scored {getScore()} correct answers
+              </h1>
               <button
                 type="button"
                 className="quiz-submit"
