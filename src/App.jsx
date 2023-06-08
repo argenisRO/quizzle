@@ -5,6 +5,7 @@ import Quiz from "./components/Quiz";
 export default function App() {
   const [quizStart, setQuizStart] = useState(false);
   const [difficultySetting, setDifficultySetting] = useState("easy");
+  const [handleError, setHandleError] = useState(false);
 
   function startQuiz() {
     setQuizStart((quizStatus) => !quizStatus);
@@ -12,13 +13,19 @@ export default function App() {
 
   return (
     <>
-      {!quizStart ? (
+      {handleError.error ? (
+        <Error startQuiz={startQuiz} />
+      ) : !quizStart ? (
         <Menu
           startQuiz={startQuiz}
           setDifficultySetting={setDifficultySetting}
         />
       ) : (
-        <Quiz startQuiz={startQuiz} difficultySetting={difficultySetting} />
+        <Quiz
+          startQuiz={startQuiz}
+          difficultySetting={difficultySetting}
+          setHandleError={setHandleError}
+        />
       )}
     </>
   );

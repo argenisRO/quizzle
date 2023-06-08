@@ -41,7 +41,7 @@ body {
   height: 200px;
   background: #fffad1;
   top: -10%;
-  left: 65%;
+  left: 75%;
   border-radius: 60% 20% 50% 40%;
 }
 
@@ -50,7 +50,7 @@ body {
   height: 300px;
   background: #deebf8;
   bottom: -20%;
-  right: 50%;
+  right: 60%;
   border-radius: 75% 70% 85% 50%;
 }
 
@@ -101,7 +101,8 @@ body {
   width: 100%;
   font-size: 0.85rem;
   border-bottom: 0.25px solid #dbdef0;
-  margin-top: 1rem;
+  margin: 0.25rem 0;
+  /* margin-top: 1rem; */
   animation: fade 0.5s ease-in;
 }
 
@@ -115,7 +116,6 @@ body {
 
 .quiz-question {
   font-weight: bold;
-  width: 100%;
   font-size: 1.25rem;
   margin-bottom: 0.75rem;
 }
@@ -123,8 +123,8 @@ body {
 .quiz-options {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
+  gap: 0.25rem;
+  /* margin-bottom: 0.75rem; */
 }
 
 .quiz-option {
@@ -132,14 +132,13 @@ body {
   color: #293264;
   font-size: 0.75rem;
   font-weight: 500;
-  padding: 0.5rem 1.125rem;
+  padding: 0.5rem 0.5rem;
   border-radius: 0.5rem;
   background: #fff;
   cursor: pointer;
 }
 
 .quiz-submit {
-  margin-top: 1.5rem;
   font-family: "Inter";
   color: #f5f7fb;
   width: 100%;
@@ -175,7 +174,7 @@ body {
 
 .score-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
@@ -183,7 +182,7 @@ body {
 .score-title {
   font-family: "Inter";
   font-size: 1rem;
-  margin: 1rem 0 -10px;
+  margin: 1rem 0;
 }
 
 .difficulty-buttons {
@@ -224,21 +223,17 @@ body {
   }
 
   #root::before {
-    width: 200px;
-    height: 200px;
-    background: #fffad1;
     top: -15%;
     left: 80%;
-    border-radius: 60% 20% 50% 40%;
   }
 
   #root::after {
-    width: 300px;
-    height: 300px;
-    background: #deebf8;
     bottom: -20%;
     right: 80%;
-    border-radius: 75% 70% 85% 50%;
+  }
+
+  .quiz-options {
+    gap: 1.25rem;
   }
 
   .quiz-options {
@@ -246,13 +241,19 @@ body {
   }
 
   .quiz-container {
-    max-width: 70%;
+    max-width: 90%;
   }
 }
 
-@media screen and (max-height: 412px) {
-  .quiz-submit {
-    margin-top: 0;
+@media screen and (min-height: 1024px) {
+  #root::before {
+    top: -10%;
+    left: 85%;
+  }
+
+  #root::after {
+    bottom: -15%;
+    right: 80%;
   }
 }
 

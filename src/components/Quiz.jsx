@@ -4,7 +4,7 @@ import { decodeHtmlText } from "../utils/parse";
 import Loading from "./Loading";
 import { nanoid } from "nanoid";
 
-export default function Quiz({ startQuiz, difficultySetting }) {
+export default function Quiz({ startQuiz, difficultySetting, setHandleError }) {
   const [quizData, setQuizData] = useState([]);
   const [quizLoaded, setQuizLoaded] = useState(false);
   const [questions, setQuestions] = useState({});
@@ -16,11 +16,10 @@ export default function Quiz({ startQuiz, difficultySetting }) {
         const response = await fetch(
           `https://opentdb.com/api.php?amount=5&category=9&difficulty=${difficultySetting}&type=multiple`
         );
-        const data = await response.json();
-
-        if (data.response_code !== 0) {
-          throw new Error("Error fetching Quiz Data");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
         }
+        const data = await response.json();
 
         // append a unique id to each question and and set it to state
         const newQuizData = data.results.map((question) => ({
@@ -31,7 +30,7 @@ export default function Quiz({ startQuiz, difficultySetting }) {
         setQuizData(newQuizData);
         setQuizLoaded(true);
       } catch (error) {
-        console.log("Error", error);
+        setHandleError(true);
       }
     }
 
