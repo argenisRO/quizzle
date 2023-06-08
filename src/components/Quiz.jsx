@@ -125,6 +125,13 @@ export default function Quiz({ startQuiz }) {
     return "0/0";
   }
 
+  function resetQuiz() {
+    setQuizComplete(null);
+    setQuizLoaded(false);
+    setQuizData([]);
+    startQuiz();
+  }
+
   return (
     <div className="quiz-container">
       {quizLoaded ? (
@@ -142,11 +149,7 @@ export default function Quiz({ startQuiz }) {
               <h1 className="score-title">
                 You Scored {getScore()} correct answers
               </h1>
-              <button
-                type="button"
-                className="quiz-submit"
-                onClick={() => setQuizComplete(null)}
-              >
+              <button type="button" className="quiz-submit" onClick={resetQuiz}>
                 Play Again
               </button>
             </div>
