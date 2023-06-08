@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Menu from "./components/Menu";
 import Quiz from "./components/Quiz";
 
 export default function App() {
   const [quizStart, setQuizStart] = useState(false);
+  const [difficultySetting, setDifficultySetting] = useState("easy");
 
   function startQuiz() {
     setQuizStart((quizStatus) => !quizStatus);
@@ -12,9 +13,12 @@ export default function App() {
   return (
     <>
       {!quizStart ? (
-        <Menu startQuiz={startQuiz} />
+        <Menu
+          startQuiz={startQuiz}
+          setDifficultySetting={setDifficultySetting}
+        />
       ) : (
-        <Quiz startQuiz={startQuiz} />
+        <Quiz startQuiz={startQuiz} difficultySetting={difficultySetting} />
       )}
     </>
   );

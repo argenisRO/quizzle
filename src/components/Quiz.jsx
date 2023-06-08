@@ -4,7 +4,7 @@ import { decodeHtmlText } from "../utils/parse";
 import Loading from "./Loading";
 import { nanoid } from "nanoid";
 
-export default function Quiz({ startQuiz }) {
+export default function Quiz({ startQuiz, difficultySetting }) {
   const [quizData, setQuizData] = useState([]);
   const [quizLoaded, setQuizLoaded] = useState(false);
   const [questions, setQuestions] = useState({});
@@ -14,7 +14,7 @@ export default function Quiz({ startQuiz }) {
     async function fetchQuiz() {
       try {
         const response = await fetch(
-          "https://opentdb.com/api.php?amount=4&category=9&difficulty=easy&type=multiple"
+          `https://opentdb.com/api.php?amount=5&category=9&difficulty=${difficultySetting}&type=multiple`
         );
         const data = await response.json();
 
